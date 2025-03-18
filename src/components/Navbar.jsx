@@ -1,9 +1,10 @@
 import { IKImage } from "imagekitio-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const navLink = [
   { name: "Home", url: "/" },
-  { name: "Trending", url: "/" },
+  { name: "Trending", url: "posts" },
   { name: "Most Popular", url: "/" },
   { name: "About", url: "/" },
 ];
@@ -35,14 +36,14 @@ const Navbar = () => {
           ${open ? "-right-0" : "-right-[100%]"}`}
         >
         {navLink.map((link)=>(
-          <a href={link.url} key={link.name}>{link.name}</a>
+          <Link to={link.url} key={link.name}>{link.name}</Link>
         ))}
           
-          <a href={``}>
+          <Link to={`/login`}>
             <button className={` py-2 px-4 rounded-3xl bg-blue-600 text-white`}>
               Login
             </button>
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -51,13 +52,13 @@ const Navbar = () => {
         className={`hidden md:flex gap-8 items-center xl:gap-12 font meduim`}
       >
         {navLink.map((link)=>(
-          <a href={link.url} key={link.name} className={`hover:underline hover:text-black/65 transition-all ease-in`}>{link.name}</a>
+          <Link to={link.url} key={link.name} className={`hover:underline hover:text-black/65 transition-all ease-in`}>{link.name}</Link>
         ))}
-        <a href={``}>
+        <Link to={``}>
           <button className={` py-2 px-4 rounded-3xl bg-blue-600 text-white hover:bg-blue-400`}>
             Login
           </button>
-        </a>
+        </Link>
       </div>
     </nav>
   );
