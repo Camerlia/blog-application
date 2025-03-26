@@ -1,5 +1,5 @@
 {
-  "name": "lamadevblogapp",
+  "name": "blogapp",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,9 +11,14 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.24.2",
+    "@tanstack/react-query": "^5.69.0",
+    "axios": "^1.8.4",
     "imagekitio-react": "^4.3.0",
+    "react-infinite-scroll-component": "^6.1.0",
     "react-quill-new": "^3.4.1",
-    "react-router-dom": "^6.30.0"
+    "react-router-dom": "^6.30.0",
+    "react-toastify": "^11.0.5",
+    "timeago.js": "^4.0.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",

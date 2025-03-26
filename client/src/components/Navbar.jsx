@@ -1,15 +1,22 @@
 import { IKImage } from "imagekitio-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  SignedIn,
+  SignedOut,
+  useAuth,
+  UserButton,
+} from "@clerk/clerk-react"
 
 const navLink = [
   { name: "Home", url: "/" },
-  { name: "Trending", url: "posts" },
-  { name: "Most Popular", url: "/" },
+  { name: "Trending", url: "/posts?sort=trending" },
+  { name: "Most Popular", url: "/posts?sort=popular" },
   { name: "About", url: "/" },
 ];
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const {getToken }= useAuth()
   return (
     <nav
       className={`py-4 w-full h-16 md:h-20 flex items-center justify-between`}
@@ -35,10 +42,12 @@ const Navbar = () => {
           className={`h-screen w-full flex flex-col gap-4 justify-center transition-all ease-in-out items-center absolute gp-8 font-medium  text-lg top-16 bg-blue-100 
           ${open ? "-right-0" : "-right-[100%]"}`}
         >
-        {navLink.map((link)=>(
-          <Link to={link.url} key={link.name}>{link.name}</Link>
-        ))}
-          
+          {navLink.map((link) => (
+            <Link to={link.url} key={link.name}>
+              {link.name}
+            </Link>
+          ))}
+
           <Link to={`/login`}>
             <button className={` py-2 px-4 rounded-3xl bg-blue-600 text-white`}>
               Login
@@ -51,14 +60,25 @@ const Navbar = () => {
       <div
         className={`hidden md:flex gap-8 items-center xl:gap-12 font meduim`}
       >
-        {navLink.map((link)=>(
-          <Link to={link.url} key={link.name} className={`hover:underline hover:text-black/65 transition-all ease-in`}>{link.name}</Link>
+        {navLink.map((link) => (
+          <Link
+            to={link.url}
+            key={link.name}
+            className={`hover:underline hover:text-black/65 transition-all ease-in`}
+          >
+            {link.name}
+          </Link>
         ))}
-        <Link to={``}>
-          <button className={` py-2 px-4 rounded-3xl bg-blue-600 text-white hover:bg-blue-400`}>
-            Login
-          </button>
-        </Link>
+        <SignedOut>
+          <Link to="/login">
+            <button className="py-2 px-4 rounded-3xl bg-blue-800 text-white">
+              Login 👋
+            </button>
+          </Link>
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </div>
     </nav>
   );
