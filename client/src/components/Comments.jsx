@@ -4,6 +4,8 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useAuth, useUser } from "@clerk/clerk-react";
 import { toast } from "react-toastify";
 
+
+
 const fetchComments = async (postId) => {
   const res = await axios.get(
     `${import.meta.env.VITE_API_URL}/comments/${postId}`

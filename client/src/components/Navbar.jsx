@@ -8,6 +8,7 @@ import {
   UserButton,
 } from "@clerk/clerk-react"
 
+
 const navLink = [
   { name: "Home", url: "/" },
   { name: "Trending", url: "/posts?sort=trending" },

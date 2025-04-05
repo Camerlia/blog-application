@@ -1,5 +1,6 @@
 import { IKImage } from 'imagekitio-react';
 
+
 const Image = ({src, className, w, h, alt}) => {
   return (
     <IKImage

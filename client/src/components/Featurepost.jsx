@@ -4,6 +4,7 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { format } from "timeago.js";
 
+
 const fetchPost = async () => {
   const res = await axios.get(
     `${import.meta.env.VITE_API_URL}/posts?featured=true&limit=4&sort=newest`
